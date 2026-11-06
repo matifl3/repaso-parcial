@@ -1,0 +1,30 @@
+@let d = model();
+
+<button type="button" (click)="ruta.navigate(['/catalogo'])">&leftarrow; volver catalogo</button>
+
+@if(d){
+     <h1>{{d.modelName}}</h1>
+     <p>{{d.category}}</p>
+     <h2>{{d.brand}}</h2>
+     <h2>{{d.material}}</h2>
+     @if (d.isInStore) {
+        <span>Tengo</span>
+     }@else {
+        <span>No tengo</span>
+     }
+    <h2>{{d.material}}</h2>
+     
+    <div class="boton">
+        <button (click)="isEditing.update((v => !v))">
+            @if (isEditing()) {cancelar} @else {editar}
+        </button>
+        <button (click)="onDelete()">Eliminar</button>
+    </div>
+
+    @if (isEditing()) {
+        <app-formulario [inDis]="d" (outDispo)="onUpdate($event)" ></app-formulario>
+    }
+
+}@else {
+    <p>No se encuentra</p>
+}

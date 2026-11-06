@@ -1,0 +1,35 @@
+.listado{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.carac{
+    display: flex;
+    background-color: var(--fondo-tarjetas);
+    align-items: center;
+    padding: 2%;
+    justify-content: space-between;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    margin: 0%;
+    padding: 0%;
+}
+.info h1,p{
+    margin: 0;
+}
+
+.infoS{
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+}
+
+.infoT{
+    display: grid;
+}
+
+

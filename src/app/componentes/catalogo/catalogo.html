@@ -1,0 +1,43 @@
+<h1>Catalogo</h1>
+
+<div class="filtro">
+    <label>Filtra categoria</label>
+    <select #categorySelec [value]="filterCategoria()" (change)="filterCategoria.set(categorySelec.value)" >
+        <option>seleciona Cateoria</option>
+        @for (c of categorias; track $index) {
+            <option value="c">{{c}}</option>
+        }
+    </select>
+</div>
+
+<div class="ordenamiento">
+    <label>ordenamiento</label>
+    <select #caterySelect [value]="filterCategoria()" (change)="filterCategoria.set(categorySelec.value)">
+        <option>selecciona ordenamiento</option>
+        <option value="asc">ascendente</option>
+        <option value="desc">descendiente</option>
+    </select>
+</div>
+<div class="clean">
+    <button (click)="reset()">Limpiar</button>
+</div>
+
+<div class="listado">
+    @for (c of productosFiltrados(); track c.id) {
+        <div class="carac">
+
+            <div class="info">
+                <h1>{{c.modelName}}</h1>
+                <p>{{c.material}}</p>
+            </div>
+            <div class="infoS">
+                <div class="infoT">
+                    <p>{{c.brand}}</p>
+                    <p>{{c.category}}</p>
+                </div>
+                <span>{{c.salesPrice?.toLocaleString('es-AR')}}</span>
+                <button class="Ver" type="button" (click)="ruta.navigate(['/catalogo',c.id])">Ver detalles</button>
+            </div>
+        </div>
+    }
+</div>

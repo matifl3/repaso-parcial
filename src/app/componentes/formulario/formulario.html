@@ -1,0 +1,63 @@
+<div class="formulario">
+    <form [formRoot]="formualrio">
+        <div class="control">
+            <label>Name</label>
+            <input type="text" [formField]="formualrio.modelName">
+            @if (formualrio.modelName().invalid() && formualrio.modelName().touched()) {
+                <span>{{ formualrio.modelName().errors()[0].message}}</span>
+            }
+        </div>
+
+        <div class="control">
+            <label>categoria</label>
+            <select id="categoria" [formField]="formualrio.category">
+                <option>selecciona categoria</option>
+                @for (c of categorias; track $index) {
+                    <option value="c">{{c}}</option>
+                }
+            </select>
+        </div>
+
+        <div class="control">
+            <label>salePrice</label>
+            <input type="number" [formField]="formualrio.salesPrice">
+            @if (formualrio.salesPrice().invalid() && (formualrio.salesPrice().invalid() || formualrio.salesPrice().dirty())) {
+                <span>{{formualrio.salesPrice().errors()[0].message}}</span>
+            }
+        </div>
+        
+        <div class="control">
+            <label>Marca</label>
+            <input type="text" [formField]="formualrio.brand">
+            @if (formualrio.brand().invalid() && formualrio.brand().touched()) {
+                <span>{{formualrio.brand().errors()[0].message}}</span>
+            }
+        </div>
+
+        <div class="control">
+            <label>material</label>
+            <input type="text" [formField]="formualrio.material">
+            @if(formualrio.material().invalid() && formualrio.material().touched()){
+                <span>{{formualrio.material().errors()[0].message}}</span>
+            }
+        </div>
+
+        <div class="control">
+            <label>Is in store</label>
+            <input type="checkbox" [formField]="formualrio.isInStore">
+        </div>
+
+        <div class="control">
+            <label>notes</label>
+            <input type="text" [formField]="formualrio.note">
+            @if(formualrio.note().invalid() && formualrio.note().touched()){
+                <span>{{formualrio.note().errors()[0].message}}</span>
+            }
+        </div>
+
+        <div class="boton">
+            <button type="submit">agregar</button>
+            <button type="reset" (click)="reset()">eliminar</button>
+        </div>
+    </form>
+</div>
